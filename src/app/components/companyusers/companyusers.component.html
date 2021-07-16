@@ -1,0 +1,204 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header ">
+  <h3> update company</h3>
+      </div>
+      <div class="card-body ">
+        <form  class="form-horizontal" name="company" (ngSubmit)="update()" novalidate>
+          <div class="form-group">
+            <input type="text" class="form-control" id="name" required [(ngModel)]="company.name" name="name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="address" required [(ngModel)]="company.address" name="address">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="region" required [(ngModel)]="company.region" name="region">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="description" required [(ngModel)]="company.description" name="description">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="phone" required [(ngModel)]="company.phone" name="phone">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="website" required [(ngModel)]="company.website" name="website">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="email" required [(ngModel)]="company.email" name="email">
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-success btn-lg"  >UPDATE</button> </div> </div>
+        </form>
+
+
+    </div>
+
+  </div>
+
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header ">
+        <h3> Add user in this company</h3>
+      </div>
+      <div class="card-body ">
+
+
+
+
+
+          <form  (ngSubmit)="onSub()"  [formGroup]="fo">
+
+                <div class="form-group">
+                  <label>Company</label>
+
+                  <select class="form-control" formControlName="idCompany" >
+                    <option [ngValue]="" disabled>{{company.name}}</option>
+
+
+                   </select>
+            </div>
+
+            <div class="form-group">
+              <label>User </label>
+  <select class="form-control" formControlName="idUser" >
+    <option value="">---Please select a user---</option>
+         <option *ngFor="let user of users" value="{{user._id}}" >
+           {{user.email}}
+         </option>
+   </select>
+</div>
+
+
+  <div class="form-group">
+    <label>Access control list </label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-1">
+          <div class="input-group-prepend" style="width: 4rem"></div>
+          <div *ngFor="let data of Data; let i=index">
+
+              <input  type="checkbox" value="{{data.value}}" id="acl"
+                name="acl"
+                 (change)="onCheckboxChange($event)" />
+              {{data.name}}
+
+          </div>
+      </div>
+
+</div>
+
+  <div class="form-group">
+    <label>DATA </label>
+    <input  type="text" name="data" formControlName="data"  class="form-control" ></div>
+
+
+            <div class="row">
+              <div class="update ml-auto mr-auto">
+                <button type="submit" class="btn btn-primary btn-round btn-lg">ADD user role</button>
+              </div>
+            </div>
+          </form>
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        </div>
+</div>
+
+
+<div class="col-md-12">
+  <div class="card ">
+    <div class="card-header ">
+      <h3> Team members in {{company.name}}</h3>
+    </div>
+    <div class="card-body ">
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              Username
+            </th>
+
+            <th>
+              First name
+            </th>
+            <th>
+              Last name
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+            Acces Control List
+            </th>
+            <th>
+              Active
+            </th>
+            <th>
+            ROLE
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let compa of comp ; let r =index" >
+              <td *ngIf="compa.idCompany" >
+                {{compa.idUser.username}}
+              </td>
+              <td *ngIf="compa.idCompany" >
+                {{compa.idUser.fname }}
+              </td>
+              <td *ngIf="compa.idCompany" >
+                {{compa.idUser.lname }}
+              </td>
+              <td *ngIf="compa.idCompany" >
+                {{compa.idUser.email}}
+              </td>
+              <td *ngIf="compa.idCompany" >
+                {{compa.acl}}
+              </td>
+              <td *ngIf="compa.idCompany" >
+                {{compa.idUser.active}}
+              </td>
+              <td *ngIf="compa.idCompany" >
+                {{compa.idUser.role}}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+    </div>
+
+
+      </div></div>
+      </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
